@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
+
 #Data entered and redirection of site
 
 #Initialize app
@@ -11,13 +12,13 @@ ENV = 'dev'
 if ENV == 'dev':
     app.debug = True
     #Dev database and key
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:dprlive1@localhost/bmw'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
 
 
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #Create DB object and query database
 db = SQLAlchemy(app)
@@ -36,6 +37,7 @@ class Feedback(db.Model):
         self.dealer = dealer
         self.rating = rating
         self.comments = comments
+
 
 #Create a route
 @app.route('/')
