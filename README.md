@@ -6,6 +6,7 @@
 ##  Create a virtual environment 
 ```
 pipenv shell
+pipenv install
 ````
 
 
